@@ -6,7 +6,7 @@ echo "========================"
 
 # Compile the web server
 echo "Compiling web chat server..."
-gcc -o web_chat_server web_chat_server.c -lpthread
+gcc -o web_chat_server web-server.c -lpthread
 
 if [ $? -ne 0 ]; then
     echo "Failed to compile server. Make sure you have gcc and pthread library."
