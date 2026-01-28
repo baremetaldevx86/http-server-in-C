@@ -350,7 +350,7 @@ void *handle_http_client(void *arg) {
         
         if (strlen(username) > 0 && strlen(message) > 0) {
             add_message_to_history(username, message);
-            printf("💬 %s: %s\n", username, message);
+            printf(" %s: %s\n", username, message);
         }
         
         send_http_response(client_fd, "200 OK", "text/plain", "OK");
@@ -372,13 +372,13 @@ int main() {
     pthread_t thread_id;
     int port = 8080;
     
-    printf("🌐 Web-Based Chat Server Starting...\n");
+    printf("Web-Based Chat Server Starting...\n");
     printf("=====================================\n");
     
     // Create socket
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) {
-        printf("❌ Socket creation failed\n");
+        printf("Socket creation failed\n");
         return -1;
     }
     
@@ -391,29 +391,29 @@ int main() {
     server_addr.sin_port = htons(port);
     
     if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        printf("❌ Binding failed\n");
+        printf("Binding failed\n");
         return -1;
     }
     
     if (listen(server_fd, 10) < 0) {
-        printf("❌ Listen failed\n");
+        printf("Listen failed\n");
         return -1;
     }
     
     char *server_ip = get_server_ip();
-    printf("✅ Server running successfully!\n\n");
-    printf("🎯 Access the chat room from any device:\n");
-    printf("   📱 Phone/Tablet:  http://%s:%d\n", server_ip, port);
-    printf("   💻 Computer:      http://%s:%d\n", server_ip, port);
-    printf("   🏠 Localhost:     http://localhost:%d\n", port);
+    printf("Server running successfully!\n\n");
+    printf("Access the chat room from any device:\n");
+    printf("   Phone/Tablet:  http://%s:%d\n", server_ip, port);
+    printf("   Computer:      http://%s:%d\n", server_ip, port);
+    printf("   Localhost:     http://localhost:%d\n", port);
     printf("\n");
-    printf("📋 Instructions:\n");
+    printf("Instructions:\n");
     printf("   1. Make sure devices are on the same WiFi network\n");
     printf("   2. Open a web browser on any device\n");
     printf("   3. Go to http://%s:%d\n", server_ip, port);
     printf("   4. Enter your name and start chatting!\n");
     printf("\n");
-    printf("🔥 Server is ready! Press Ctrl+C to stop.\n");
+    printf("Server is ready! Press Ctrl+C to stop.\n");
     printf("=====================================\n\n");
     
     // Accept connections
